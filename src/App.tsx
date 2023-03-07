@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./app.module.css";
+import "./app.css";
 
 function App() {
   const [showGame, setShowGame] = useState<boolean>(false);
@@ -13,10 +13,10 @@ function App() {
     <main>
       {!showGame ? (
         <>
-          <h1>Welcome to Repo-Wars</h1>
-          <h2>A developer-driven guessing game</h2>
+          <h1 className="title">Welcome to Repo-Wars</h1>
+          <h2 className="headline gradient text">A developer-driven guessing game</h2>
           {!repos.length ? (
-            <span>Loading game...</span>
+            <span className="loading">Loading game...</span>
           ) : (
             <button
               type="button"
@@ -28,7 +28,8 @@ function App() {
         </>
       ) : (
         <h2>Jogo</h2>
-      )} 
+      )
+      }
     </main>
   )
 }

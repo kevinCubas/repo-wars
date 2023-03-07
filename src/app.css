@@ -1,0 +1,167 @@
+/* theme */
+:root {
+  --color-primary: #9d65ff;
+  --color-secondary: #dda2f6;
+  --color-highlight: #58ebd7;
+  --color-danger: #ff206e;
+  --color-glow: #6113aa86;
+  --color-light: #fff;
+  /* dark shades */
+  --color-shade: #556;
+  --color-darkish: #223;
+  --color-dark: #112;
+  --color-darkest: #001;
+}
+
+/* Gradients */
+.gradient {
+  background: -webkit-linear-gradient(
+    bottom,
+    var(--color-primary),
+    var(--color-highlight)
+  );
+}
+
+.gradient.text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* base styles  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+  /* font-size normal === 16px */
+  /* Accessibility */
+@media (max-width: 1080px) {
+  html {
+    /* 15px */
+    font-size: 93.75%;
+  }
+  }
+@media (max-width: 720px) {
+  html {
+    /* 14px */
+    font-size: 87.5%;
+  }
+}
+
+
+body {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+
+main {
+  height: 100svh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-light);
+}
+
+.headline {
+  font-size: 2rem;
+  line-height: 3rem;
+  text-align: center;
+  color: var(--color-primary);
+}
+
+.loading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-light);
+  text-align: center;
+  animation: bouncy 1s infinite;
+}
+
+button {
+  background: none;
+  color: var(--color-glow);
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  border: .1em solid var(--color-glow);
+  position: relative;
+  text-shadow: 0 0 .5em var(--color-glow);
+  box-shadow: 0px 0px 20px 2px var(--color-glow), inset 0px 0px 10px 2px var(--color-glow);
+  animation: buttonLight 3s infinite ease-out;
+  transition: all .2s ease-in-out;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: var(--color-glow);
+
+  transform: perspective(1em)
+  rotateX(40deg) scale(1, .35);
+  filter: blur(1.5em);
+
+  animation: reflectionGlow 3s infinite ease-out;
+}
+
+button:hover {
+  transform: scale(1.1);
+  animation-play-state: paused;
+}
+
+button:hover::before {
+  animation-play-state: paused;
+}
+
+@keyframes bouncy {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-0.5rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes buttonLight {
+  0% {
+    background: none;
+  }
+  100% {
+    color: var(--color-light);
+    background: var(--color-glow);
+    box-shadow: 0 0 2em 0.5em var(--color-glow);
+  }
+}
+
+@keyframes reflectionGlow {
+  0% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
