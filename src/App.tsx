@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "./app.css";
+import { useRepos } from "./hooks";
 
 function App() {
   const [showGame, setShowGame] = useState<boolean>(false);
-  const [repos, setRepos] = useState([1])
+  // const [repos, setRepos] = useState([1])
+  const [ repos, setRepos, allRepos ] = useRepos(100)
 
   const handleStartGame = () => {
     setShowGame(true)
