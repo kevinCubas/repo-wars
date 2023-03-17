@@ -73,8 +73,8 @@ main {
 }
 
 .title {
-  font-size: 4rem;
-  font-weight: 700;
+  font-family: 'Metal Mania', cursive;
+  font-size: 6rem;
   text-align: center;
   color: var(--color-light);
 }

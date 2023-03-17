@@ -13,7 +13,7 @@ function App() {
     <main>
       {!showGame ? (
         <>
-          <h1 className="title">Welcome to Repo-Wars</h1>
+          <h1 className="title">Repo-Wars</h1>
           <h2 className="headline gradient text">A developer-driven guessing game</h2>
           {!repos.length ? (
             <span className="loading">Loading game...</span>
