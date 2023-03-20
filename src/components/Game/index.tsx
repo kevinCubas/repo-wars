@@ -1,6 +1,8 @@
 import styles from "./game.module.css";
 import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import { IRepo } from "../../@types/repo";
+import { RepoCard } from "../RepoCard";
+import { FaCheckCircle, FaExchangeAlt, FaTimesCircle } from "react-icons/fa";
 
 interface IGameProps {
   repoState: [IRepo[], Dispatch<SetStateAction<IRepo[]>>];
@@ -16,8 +18,11 @@ export const Game: FC<IGameProps> = ({repoState, originalList, setShowGame}) => 
   useEffect(() => {
     setRepo1(originalList[0])
     setRepo2(originalList[1])
-    console.log(originalList)
   }, [])
+
+  const handleChoice = (r: IRepo) => {
+    
+  }
 
   return (
     <div className={styles.game}>
@@ -28,13 +33,11 @@ export const Game: FC<IGameProps> = ({repoState, originalList, setShowGame}) => 
           <div className={styles.repos}>
             <h1 className={styles.title}>Choose the repo with most Stars!</h1>
             <div className={styles.container}>
-              <div>
-                <h2>{repo1.name} - {repo1.full_name}</h2>
+              <RepoCard content={repo1} handler={handleChoice} />
+              <div className={styles.dashboard}>
+                <FaExchangeAlt className={styles['icon-versus']}/>
               </div>
-              <div className={styles.dashboard}></div>
-              <div>
-                <h2>{repo2.name} - {repo2.full_name}</h2>
-              </div>
+              <RepoCard content={repo2} handler={handleChoice}/>
             </div>
           </div>
         )
@@ -42,7 +45,7 @@ export const Game: FC<IGameProps> = ({repoState, originalList, setShowGame}) => 
       <div className={styles.buttons}>
         <button
           type='submit'
-          className={`${styles.button} ${styles.back}`}
+          className={`${styles.button}`}
           onClick={() => setShowGame(false)}
         >
           {isGameOver ? "Play Again" : "Back"}
