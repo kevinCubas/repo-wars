@@ -1,10 +1,17 @@
-import { useEffect, useState } from "react"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { IRepo } from "../@types/repo";
 import { githubClient } from "../api"
 const randomSince = Math.floor(Math.random() * 1000000);
 
-export const useRepos = (amount: number) => {
-  const [allRepos, setAllRepos] = useState<any>([])
-  const [repositories, setRepositories] = useState<any>([])
+type UseReposReturnType = [
+  repositories: IRepo[],
+  setRepositories: Dispatch<SetStateAction<IRepo[]>>,
+  allRepos: IRepo[]
+]
+
+export const useRepos = (amount: number): UseReposReturnType => {
+  const [allRepos, setAllRepos] = useState<IRepo[]>([])
+  const [repositories, setRepositories] = useState<IRepo[]>([])
 
   useEffect(() => {
     githubClient
@@ -17,7 +24,7 @@ export const useRepos = (amount: number) => {
         page: 1,
       })
       .then((response) => {
-        setRepositories(response.data.items);
+        setRepositories(response.data.items as IRepo[]);
       });
   }, [])
 
