@@ -20,7 +20,7 @@ This project is a web game created using React, Vite, TypeScript and consuming t
 - [x] Creation of Utilities
 
 ## Live Version
-
+[Repowars](https://repowars-kevincubas.vercel.app/)
 ## Technologies & tools
 
 This project uses the following tools:
