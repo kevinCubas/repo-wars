@@ -30,7 +30,14 @@ export const RepoCard: FC<RepoCardProps> = ({content, handler}) => {
             alt={`Avatar for ${content.full_name}`} 
           />
           <ul className={styles.stats}>
-            <li className={styles.item}></li>
+            <li className={styles.item}>
+            <p>
+                {import.meta.env.VITE_GOD_MODE === "true"
+                  ? content.stargazers_count
+                  : "?????..."}
+              </p>
+              <FaStar />
+            </li>
             <li className={styles.item}>
               <p>{content.forks_count}</p>
               <FaCodeBranch />
