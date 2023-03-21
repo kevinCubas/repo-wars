@@ -2,7 +2,12 @@
   font-family: 'Metal Mania', cursive;
   font-size: 6rem;
   text-align: center;
-  color: var(--color-light);
+  letter-spacing: 5px;
+  background: linear-gradient(to right, var(--color-primary), var(--color-light), var(--color-primary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shine 5s infinite ease-in-out ;
 }
 
 .headline {
@@ -58,6 +63,23 @@
 
 .button:hover::before {
   animation-play-state: paused;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  50% {
+    background-position: 300px;
+  }
+
+  75% {
+    background-position: 600px;
+  }
+
+  100% {
+    background-position: 0px;
+  }
 }
 
 @keyframes bouncy {
